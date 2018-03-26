@@ -1,0 +1,37 @@
+<resources>
+    <string name="app_name">МЭИ ПК</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="default_notification_channel_id">default</string>
+    <string name="testingGroupName">Testing group</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+    <string name="test">test</string>
+    <string name="take_photo">Take Photo</string>
+    <string name="get_token">Get token</string>
+    <string name="testasddsa">tse</string>
+    <string name="filename">FILENAME</string>
+    <string name="aasd">aasd</string>
+    <string name="logo">LOGO</string>
+    <string name="loading">Загрузка...</string>
+    <string name="passRecovery">Забыли пароль?</string>
+    <string name="login_btn">Войти</string>
+    <string name="login_hint">Логин</string>
+    <string name="passwordHint">Пароль</string>
+    <string name="gotoRegPage">Нет аккаунта? Зарегистрироваться</string>
+    <string name="last_name">Фамилия</string>
+    <string name="first_name">Имя</string>
+    <string name="middle_name">Отчество</string>
+    <string name="birth_date_hint">Выберите дату рождения.</string>
+    <string name="answer_str">Ваш ответ</string>
+    <string name="reg_btn_text">Зарегистрироваться</string>
+    <string name="gotoLoginPage">Уже есть аккаунт?</string>
+    <string name="choose_secret_question">Выберите контрольный вопрос:</string>
+    <string-array name="questions">
+        <item>Девичья фамилия вашей матери</item>
+        <item>Имя первого питомца</item>
+        <item>Любимый цвет</item>
+    </string-array>
+</resources>

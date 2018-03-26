@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "954355370786",
+    "firebase_url": "https://mpei-s.firebaseio.com",
+    "project_id": "mpei-s",
+    "storage_bucket": "mpei-s.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:954355370786:android:a01bb035b9a061a0",
+        "android_client_info": {
+          "package_name": "ru.pkmpei.mpei_pk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "954355370786-9ga7gg16lu9no1jd2faggls3irhuqldr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ru.pkmpei.mpei_pk",
+            "certificate_hash": "c9f2b284ffb16381a496248c333e1ed15827cbbb"
+          }
+        },
+        {
+          "client_id": "954355370786-q9lp0ggk8f64dr807ui15fcr14jkgmpc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBzxZGoBM4Z0SsxTN_zxRJaVn0j_inZlM4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "954355370786-q9lp0ggk8f64dr807ui15fcr14jkgmpc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
