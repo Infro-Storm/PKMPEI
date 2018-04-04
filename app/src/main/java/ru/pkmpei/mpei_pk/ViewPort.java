@@ -5,4 +5,5 @@ package ru.pkmpei.mpei_pk;
  */
 
 public interface ViewPort {
+    void sendToast(String string);
 }

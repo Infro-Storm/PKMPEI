@@ -1,40 +1,32 @@
 package ru.pkmpei.mpei_pk;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.widget.Toast;
 
+import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.util.concurrent.ExecutionException;
-
-import ru.pkmpei.mpei_pk.dataTypes.SessionData;
 
 /**
  * Created by infrostorm on 15.12.2017.
  */
 
 public class NetworkModel extends AsyncTask<String, String, String> {
-
-    private String pk_host="91.211.106.34";
-    private String reg_url="/www/ajax/pk_reg_user.php";
-    private String log_url="/www/ajax/pk_auth.php";
-    Context context;
-
-    public NetworkModel (Context context)
+    private static final String charset = "UTF-8";
+    private ProtocolMPEI protocolMPEI;
+    NetworkModel(ProtocolMPEI protocolMPEI)
     {
-        this.context = context;
+        this.protocolMPEI = protocolMPEI;
     }
-//    private String _url="/www/ajax/pk_reg_user.php";
 
-    public SessionData GetSessionData(String login, String password) {
-        String siteID = null;
-            this.execute("http://" + pk_host + log_url, "login=" + login + "&password=" + password);
-        return new SessionData(login, password, siteID);
+    public void sendRequest(String address, String data) {
+        this.execute(address, data);
     }
 
     @Override
@@ -45,47 +37,42 @@ public class NetworkModel extends AsyncTask<String, String, String> {
 
     @Override
     protected String doInBackground(String... params) {
-
         String urlString = params[0]; // URL to call
-
         String data = params[1]; //data to post
-
-        OutputStream out = null;
+        StringBuilder return_data= new StringBuilder();
+        OutputStream out;
+        InputStream in;
         try {
-
             URL url = new URL(urlString);
-
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-
+            urlConnection.setRequestMethod("POST");
             out = new BufferedOutputStream(urlConnection.getOutputStream());
-
-            BufferedWriter writer = new BufferedWriter (new OutputStreamWriter(out, "UTF-8"));
-
+            in = new BufferedInputStream(urlConnection.getInputStream());
+            BufferedWriter writer = new BufferedWriter (new OutputStreamWriter(out, charset));
+            BufferedReader reader = new BufferedReader( new InputStreamReader(in,charset ));
             writer.write(data);
-
-            writer.flush();
-
+            //writer.flush();
+            String line;
+            do {
+                line = reader.readLine();
+                if (line!=null) return_data.append(line);
+            }while (line!=null);
+            reader.readLine();
             writer.close();
-
             out.close();
-
             urlConnection.connect();
-
-
         } catch (Exception e) {
-
-            System.out.println(e.getMessage());
-
-
-
+            e.printStackTrace();
+            System.out.println();
+            return return_data.toString();
         }
 
-        return urlString;
+        return return_data.toString();
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        Toast.makeText(context, "Результат: " + s, Toast.LENGTH_LONG).show();
+        protocolMPEI.MessageReceiver(s);
     }
 }
